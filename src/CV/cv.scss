@@ -1,0 +1,22 @@
+$main-gap: 20px;
+
+* {font-family: sans-serif;}
+
+.cv-main {
+    background-color: #f2f7ff;
+    max-width: 850px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas: "header header" "personal details" ;
+    grid-template-columns: 200px 1fr;
+    
+    
+}
+
+
+
+
+
+
+
