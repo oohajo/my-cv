@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 
 interface Experience {
+  id: number;
   year: number;
   description: string;
 }
@@ -11,27 +12,50 @@ interface CVData {
   name: string;
   lastName: string;
   position: string;
-  //tablica obiektow zgodnych z intefrace Experience
   experience: Experience[];
-  //tablica ciagow znakow
   education: string[];
 }
 
-//zanim cokolwiek wyrenderujemy tworzymy obiekt. ktory bedzie implementowac przygotowany interface
 const cvData: CVData = {
-  photo: "https://placehold.co/400x400",
+  photo: "https://placehold.co/200x200?text=DK",
   name: "Diana",
   lastName: "K.",
   position: "Doctor of Sciences in Physics",
   experience: [
-    {year: 2024, description: "Lorem ipsum"},
-    {year: 2020, description: "Dolor sit amet"},
+    {id: 2, year: 2024, description: "Lorem ipsum"},
+    {id: 1, year: 2020, description: "Dolor sit amet"},
   ],
   education: ["Sobotka", "noc krotka", "gwiazdy sie pala"]
 }
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <h1>My CV</h1>
+    <main>
+      <header>
+        <h1>CV {cvData.name} {cvData.lastName}</h1>
+      </header>
+      <aside>
+        <h2>Personal data</h2>
+        <img src={cvData.photo} alt={`${cvData.name} ${cvData.lastName} profile photo `} />
+        <p>{cvData.name} {cvData.lastName}</p>
+        <small>{cvData.position}</small>
+      </aside>
+      <section>
+        <h2>Experience</h2>
+        <ul>
+          {cvData.experience.map(experience => (
+            <li key={experience.id}>
+              <strong>{experience.year}</strong> - {experience.description}
+            </li>
+          ))}
+        </ul>
+        <h2>Education</h2>
+        <ul>
+          {cvData.education.map( (education, index) => (
+            <li key={index}> {education} </li>
+          ))}
+        </ul>
+      </section>
+    </main>
   </React.StrictMode>,
 )
