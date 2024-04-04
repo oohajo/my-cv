@@ -1,25 +1,18 @@
 import './personal.scss'
 
-  interface CVData {
-    photo: string;
-    name: string;
-    lastName: string;
-    position: string;
-  }
-  
-  const cvData: CVData = {
-    photo: "https://placehold.co/200x200?text=DK",
-    name: "Diana",
-    lastName: "K.",
-    position: "Doctor of Sciences in Physics",
-  }
+type Props = {
+  data: CVPersonal;
+}
 
-const Personal = () => {
+const Personal = ({data: {photo, name, lastName, position}}: Props) => {
     return  <aside className='cv-personal'>
     <h2>Personal data</h2>
-    <img className='cv-photo' src={cvData.photo} alt={`${cvData.name} ${cvData.lastName} profile photo `} />
+    {/* <img className='cv-photo' src={cvData.photo} alt={`${cvData.name} ${cvData.lastName} profile photo `} />
     <p>{cvData.name} {cvData.lastName}</p>
-    <small>{cvData.position}</small>
+    <small>{cvData.position}</small> */}
+    <img className='cv-photo' src={photo} alt={`${name} ${lastName} profile photo `} />
+    <p>{name} {lastName}</p>
+    <small>{position}</small>
   </aside>
 }
 

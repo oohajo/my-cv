@@ -1,19 +1,15 @@
 import './header.scss'
+import { CVPersonal } from '../../types'}
 
  
-  interface CVData {
-    name: string;
-    lastName: string;
-  }
-  
-  const cvData: CVData = {
-    name: "Diana",
-    lastName: "K.",
-  }
+type Props = {
+  data: CVPersonal;
+}
 
-const Header = () => {
+const Header = ({data: {name, lastName}}: Props) => {
     return <header className='cv-header'>
-    <h1>CV {cvData.name} {cvData.lastName}</h1>
+      {/* <h1>CV {data.name} {data.lastName}</h1> */}
+      <h1>CV {name} {lastName}</h1>
   </header>
 }
 
